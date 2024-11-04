@@ -34,6 +34,7 @@ def scrapyLista() -> list:
     # inicializamos el navegador
 
     driver.get('https://www.corteconstitucional.gov.co/relatoria/buscador_new/?searchOption=texto&fini=1992-01-01&ffin=2024-10-15&buscar_por=violencia+de+genero&accion=search&verform=si&slop=1&buscador=buscador&qu=search_principalMatch&maxprov=100&OrderbyOption=des__score&tot_provi_found=5144&tot_provi_show=100')
+    # driver.get('https://www.unilibre.edu.co/pereira/')
 
     listaFinal = []
 

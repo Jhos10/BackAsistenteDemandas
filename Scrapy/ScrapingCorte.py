@@ -6,12 +6,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import re
+import pprint as pp
 
 
 def obtenerSentencia(texto):
     patron1 = r"https:\/\/www\.corteconstitucional\.gov\.co\/relatoria\/[A-Za-z0-9\/_.-]+\.htm"
     numeroSentencia = re.findall(patron1, str(texto))
-    # print(numeroSentencia)
+
 
     sentenciasFinales = []
     for i in numeroSentencia:
@@ -102,17 +103,18 @@ def scrapingtablabloy(soup):
     if tbody:
 
         sentencias = obtenerSentencia(tbody)
-        # print(sentencias)
-
+        # pp.pprint(sentencias)
+        
         fechas = obteneFechas(tbody)
-        # print(fechas)
-        # print(fechas)
+        # pp.pprint(fechas)
+        # # print(fechas)
+        # # print(fechas)
 
         tuplaTemaResumen = obtenerTemaResumen(tbody)
         # print(tuplaTemaResumen)
-
+        # print(sentencias)
         post = crearListaDiccionarios(sentencias, fechas, tuplaTemaResumen)
-        # pp.pprint(post)
+
 
     else:
         print("No se encontró <tbody> en el documento.")
