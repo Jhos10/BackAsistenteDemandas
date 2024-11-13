@@ -65,16 +65,10 @@ def obtenerTemaResumen(contenido):
             resumen = texto.split("RESUMEN:", 1)[1].strip()
         else:
             resumen = "Resumen no encontrado"
-        # print("----------------------")
-        # print("TEMA")
-        # print(tema)
-        # print("RESUMEN")
-        # print(resumen)
         tupla = tema, resumen
         tema_resumenLista.append(tupla)
     return tema_resumenLista
 
-# def recoleccionModal(texto):
 
 
 def tuplaDemandanteDemandado(texto):
@@ -84,10 +78,6 @@ def tuplaDemandanteDemandado(texto):
 
 def crearListaDiccionarios(sentencias, fechas, temasResumenes):
     listaCasos = []
-    print(len(fechas))
-    print(len(sentencias))
-    print(len(temasResumenes))
-    # for sentencia in sentencias:
     for indice in range(len(sentencias)):
         listaCasos.append({"#Sentencia": sentencias[indice], "Fecha": fechas[indice][0], "Tema": temasResumenes[indice]
                           [0], "Resumen": temasResumenes[indice][1], "Demandado": None, "Demandante": None})
@@ -103,16 +93,10 @@ def scrapingtablabloy(soup):
     if tbody:
 
         sentencias = obtenerSentencia(tbody)
-        # pp.pprint(sentencias)
         
         fechas = obteneFechas(tbody)
-        # pp.pprint(fechas)
-        # # print(fechas)
-        # # print(fechas)
 
         tuplaTemaResumen = obtenerTemaResumen(tbody)
-        # print(tuplaTemaResumen)
-        # print(sentencias)
         post = crearListaDiccionarios(sentencias, fechas, tuplaTemaResumen)
 
 

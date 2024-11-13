@@ -1,10 +1,9 @@
-import requests
+from huggingface_hub import InferenceClient
 
-API_URL = "https://api-inference.huggingface.co/models/cardiffnlp/twitter-roberta-base-sentiment-latest"
-headers = {"Authorization": "Bearer hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
-payload = {
-    "inputs": "Today is a great day",
-}
 
-response = requests.post(API_URL, headers=headers, json=payload)
-response.json()
+client = InferenceClient(
+  "cardiffnlp/twitter-roberta-base-sentiment-latest",
+  token="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",
+)
+
+client.text_classification("Today is a great day")

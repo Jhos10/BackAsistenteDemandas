@@ -40,7 +40,7 @@ def scrapyLista() -> list:
 
     paginas = 1
     contadorIterador = 0
-    while paginas <= 4:
+    while paginas <= 1:
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         info = scrapingtablabloy(soup)
         listaFinal += info
@@ -48,7 +48,6 @@ def scrapyLista() -> list:
         driver.execute_script("window.scrollTo(0, 0);")
         contador = 1
         while contador <= 25:
-            print(contador)
             WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable(
                     (By.XPATH, f'//*[@id = "tablet_results"]/tbody/tr[{contador}]/td[1]/p/a'))
@@ -82,7 +81,7 @@ def scrapyLista() -> list:
             EC.element_to_be_clickable(
                 (By.CSS_SELECTOR, 'a.page-link.next'))
         ).click()
-        print()
+        # print()
         time.sleep(3)
         paginas += 1
 
