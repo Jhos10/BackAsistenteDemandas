@@ -34,12 +34,13 @@ def scrapyLista() -> list:
     # inicializamos el navegador
 
     driver.get('https://www.corteconstitucional.gov.co/relatoria/buscador_new/?searchOption=texto&fini=1992-01-01&ffin=2024-10-15&buscar_por=violencia+de+genero&accion=search&verform=si&slop=1&buscador=buscador&qu=search_principalMatch&maxprov=100&OrderbyOption=des__score&tot_provi_found=5144&tot_provi_show=100')
+    # driver.get('https://www.unilibre.edu.co/pereira/')
 
     listaFinal = []
 
     paginas = 1
     contadorIterador = 0
-    while paginas <= 4:
+    while paginas <= 1:
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         info = scrapingtablabloy(soup)
         listaFinal += info
@@ -47,7 +48,6 @@ def scrapyLista() -> list:
         driver.execute_script("window.scrollTo(0, 0);")
         contador = 1
         while contador <= 25:
-            print(contador)
             WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable(
                     (By.XPATH, f'//*[@id = "tablet_results"]/tbody/tr[{contador}]/td[1]/p/a'))
@@ -81,7 +81,7 @@ def scrapyLista() -> list:
             EC.element_to_be_clickable(
                 (By.CSS_SELECTOR, 'a.page-link.next'))
         ).click()
-        print()
+        # print()
         time.sleep(3)
         paginas += 1
 
