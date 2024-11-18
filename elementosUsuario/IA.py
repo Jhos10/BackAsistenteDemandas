@@ -7,3 +7,4 @@ client = InferenceClient(
 )
 
 client.text_classification("Today is a great day")
+
